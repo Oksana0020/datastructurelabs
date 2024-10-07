@@ -40,7 +40,7 @@ public class Lab1Q1 {
             System.out.println(iterator.previous());
         }
 
-        // again addig Kay
+        // again addig Kay name
         names.add("Kay");
         System.out.println("My list of names after adding Kay again: " + names);
 

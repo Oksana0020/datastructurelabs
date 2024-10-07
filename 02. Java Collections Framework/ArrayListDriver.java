@@ -4,7 +4,7 @@ import java.util.List;
 public class ArrayListDriver {
     public static void main(String[] args) {
         List<String> names = new ArrayList<String>();
-        names.add("Bill"); // adds at end
+        names.add("Bill");
         names.add("Jill");
         names.add("Paul");
         names.add("Sue"); // names now has Bill, Jill, Paul, Sue
@@ -15,7 +15,7 @@ public class ArrayListDriver {
         for (int i = 0; i < names.size(); i++){
             String name = names.get(i);
             System.out.println(name);
-            //try this
+
         }
     }
 }

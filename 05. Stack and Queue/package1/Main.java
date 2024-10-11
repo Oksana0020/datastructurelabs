@@ -10,3 +10,4 @@ public class Main {
         System.out.println("Finishing main "+n);
     }
 }
+//first main, then havefun calls, then have morefun. There is nothing after so goes back to havefun

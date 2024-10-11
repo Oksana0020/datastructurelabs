@@ -15,7 +15,7 @@ public class MapDemo
       Map<String, Color> favoriteColors = new HashMap<String, Color>();
       favoriteColors.put("Juliet", Color.BLUE);
       favoriteColors.put("Romeo", Color.GREEN);
-      favoriteColors.put("Adam", Color.MAGENTA);
+      favoriteColors.put("Adam", Color.MAGENTA); //there is no purple
       favoriteColors.put("Eve", Color.BLUE);
       favoriteColors.put("Kay", Color.BLUE);
       favoriteColors.put("Kay", Color.ORANGE);// modifies value of existing key

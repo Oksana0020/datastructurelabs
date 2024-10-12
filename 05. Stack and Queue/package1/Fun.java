@@ -6,6 +6,13 @@ public class Fun {
         System.out.println("Having fun! "+n);
         MoreFun moreFun = new MoreFun();
         moreFun.haveMoreFun();
+        moreFun.haveEvenMoreFun(); // New method call
         System.out.println("Finishing fun "+n);
+    }
+
+    public void haveEvenMoreFunWithParameter(int n) {
+        System.out.println("Having even more fun with parameter! "+n);
+        MoreFun moreFun = new MoreFun();
+        moreFun.haveMoreFunWithParameter(n);
     }
 }

@@ -27,7 +27,10 @@ public class Lab1Q4 {
                 for (String word : words) {
                     word = word.toLowerCase(); // to lowercase
                     if (!word.isEmpty()) {
-                        wordLineMap.put(word, lineNumber);
+                        wordLineMap.putIfAbsent(word, new TreeSet<>()); // Adding word if not present
+                        //wordLineMap.put(word, lineNumber);
+                        //use putIfAbsent instead to fix mistake
+                        wordLineMap.get(word).add(lineNumber);
                     }
                 }
             }
@@ -37,6 +40,8 @@ public class Lab1Q4 {
             for (Map.Entry<String, TreeSet<Integer>> entry : wordLineMap.entrySet()) {
                 System.out.println("Word: '" + entry.getKey() + "' occurs on lines: " + entry.getValue());
             }
+            //System.out.println("Word: " + word + ", Line Number: " + lineNumber);
+            //System.out.println("Map: " + wordLineMap);
             //number of unique words
             System.out.println("Number of unique words in Hamlet: " + wordLineMap.size());
             // a search for "fortune" word in the map

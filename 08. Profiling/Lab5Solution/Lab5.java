@@ -11,7 +11,7 @@ public class Lab5 {
     public static void main(String[] args) {
         String filePath = "C:\\Users\\Oksana\\IdeaProjects\\MTUSep24DSC\\08. Profiling\\Lab5Solution\\words_alpha.txt"; // Adjust the path if necessary
         int[] sizes = {10, 100, 1000, 10000, 100000, 1000000}; // Sizes to test
-        int reps = 500; // Reduced number of repetitions for larger sizes
+        int reps = 1000; // Reduced number of repetitions for larger sizes
 
         try {
             List<String> words = loadWords(filePath); // Load words from file

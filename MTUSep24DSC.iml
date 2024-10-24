@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/05. Stack and Queue" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/06. Recursion" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/08. Profiling" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/BinarySearchTree" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

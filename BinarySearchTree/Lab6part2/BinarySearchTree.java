@@ -22,7 +22,6 @@ public class BinarySearchTree<E extends Comparable<E>> {
         root = null;
     }
 
-    // Insert method (recursive)
     public void insert(E element) {
         Node newNode = new Node(element);
         if (root == null) {
@@ -34,7 +33,6 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     private void insertSub(Node newNode, Node node) {
         int result = newNode.data.compareTo(node.data);
-        // duplicates go to the right
         if (result >= 0) {
             if (node.right == null) {
                 node.right = newNode;
@@ -50,149 +48,77 @@ public class BinarySearchTree<E extends Comparable<E>> {
         }
     }
 
-    // Iterative insert method
-    public void insertIterative(E element) {
-        Node newNode = new Node(element);
-        if (root == null) {
-            root = newNode;
-        } else {
-            Node current = root;
-            while (true) {
-                int result = newNode.data.compareTo(current.data);
-                if (result >= 0) {
-                    if (current.right == null) {
-                        current.right = newNode;
-                        return;
-                    }
-                    current = current.right;
-                } else {
-                    if (current.left == null) {
-                        current.left = newNode;
-                        return;
-                    }
-                    current = current.left;
-                }
-            }
-        }
-    }
-
-    // Check if the tree is empty
-    public boolean isEmpty() {
-        return root == null;
-    }
-
-    // Check if the tree contains a particular element
-    public boolean contains(E element) {
-        Node current = root;
-        while (current != null) {
-            int result = element.compareTo(current.data);
-            if (result == 0) {
-                return true;
-            } else if (result > 0) {
-                current = current.right; // searching in right subtree
-            } else {
-                current = current.left; // search in left subtree
-            }
-        }
-        return false; // when not found element return false
-    }
-
-    // Recursive version of contains method
-    public boolean containsRecursive(E element) {
-        return containsRecursiveHelper(root, element);
-    }
-
-    private boolean containsRecursiveHelper(Node node, E element) {
-        if (node == null) {
-            return false;
-        }
-        int result = element.compareTo(node.data);
-        if (result == 0) {
-            return true;
-        } else if (result > 0) {
-            return containsRecursiveHelper(node.right, element); // search in right subtree
-        } else {
-            return containsRecursiveHelper(node.left, element); // search in left subtree
-        }
-    }
-
-    // Inorder Traversal (Recursive)
-    public void print() {
-        if (root != null) {
-            printSub(root);
-        }
-    }
-
-    private void printSub(Node node) {
-        // Inorder traversal
-        if (node != null) {
-            printSub(node.left);
-            System.out.println(node.data);
-            printSub(node.right);
-        }
-    }
-
-    // Preorder Traversal
     public void printPreOrder() {
-        printPreOrderSub(root);
+        printPreOrder(root);
     }
 
-    private void printPreOrderSub(Node node) {
+    private void printPreOrder(Node node) {
         if (node != null) {
-            System.out.println(node.data); // visit node
-            printPreOrderSub(node.left);    // go left
-            printPreOrderSub(node.right);   // go right
+            System.out.print(node.data + "\n");
+            printPreOrder(node.left);
+            printPreOrder(node.right);
         }
     }
 
-    // Postorder Traversal
     public void printPostOrder() {
-        printPostOrderSub(root);
+        printPostOrder(root);
     }
 
-    private void printPostOrderSub(Node node) {
+    private void printPostOrder(Node node) {
         if (node != null) {
-            printPostOrderSub(node.left);   // go left
-            printPostOrderSub(node.right);  // go right
-            System.out.println(node.data);   // visit the node
+            printPostOrder(node.left);
+            printPostOrder(node.right);
+            System.out.print(node.data + "\n");
         }
     }
 
-    // Non-recursive Inorder Traversal
-    public void printInOrderIterative() {
+    public void printInOrder() {
         Deque<Node> stack = new LinkedList<>();
         Node current = root;
 
         while (!stack.isEmpty() || current != null) {
-            if (current != null) {
-                stack.push(current); // Push current node onto the stack
-                current = current.left; // Move to left child
-            } else {
-                current = stack.pop(); // Pop from stack
-                System.out.println(current.data); // Visit the node
-                current = current.right; // Move to right child
+            while (current != null) {
+                stack.push(current);
+                current = current.left;
             }
+            current = stack.pop();
+            System.out.print(current.data + "\n");
+            current = current.right;
         }
     }
 
-    // Breadth-First Traversal (Level Order)
     public void printBreadthFirst() {
         if (root == null) return;
 
         Deque<Node> queue = new LinkedList<>();
-        queue.add(root); // Start with the root
+        queue.offer(root);
 
         while (!queue.isEmpty()) {
-            Node current = queue.remove(); // Remove from the front
-            System.out.println(current.data); // Visit the node
+            Node current = queue.poll();
+            System.out.print(current.data + "\n");
 
-            // Insert children in left-to-right order
             if (current.left != null) {
-                queue.add(current.left);
+                queue.offer(current.left);
             }
             if (current.right != null) {
-                queue.add(current.right);
+                queue.offer(current.right);
             }
         }
+    }
+
+    public void printPreOrderTraversal() {
+        printPreOrder();
+    }
+
+    public void printPostOrderTraversal() {
+        printPostOrder();
+    }
+
+    public void printInOrderTraversal() {
+        printInOrder();
+    }
+
+    public void printBreadthFirstTraversal() {
+        printBreadthFirst();
     }
 }

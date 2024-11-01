@@ -1,116 +1,65 @@
 package Lab6part2;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BinarySearchTreeTest {
     private BinarySearchTree<Integer> bst;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         bst = new BinarySearchTree<>();
-    }
-
-    @Test
-    public void testInsertAndContains() {
-        bst.insert(10);
-        bst.insert(5);
-        bst.insert(15);
-
-        assertTrue(bst.contains(10));
-        assertTrue(bst.contains(5));
-        assertTrue(bst.contains(15));
-        assertFalse(bst.contains(7)); // 7 not inserted
-    }
-
-    @Test
-    public void testIsEmpty() {
-        assertTrue(bst.isEmpty());
-        bst.insert(10);
-        assertFalse(bst.isEmpty());
-    }
-
-    @Test
-    public void testPrintInOrder() {
-        bst.insert(10);
-        bst.insert(5);
-        bst.insert(15);
-        bst.insert(3);
-        bst.insert(7);
-
-        // print method
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outContent));
-
-        bst.print();
-
-        String expectedOutput = "3\n5\n7\n10\n15\n";
-        assertEquals(expectedOutput, outContent.toString());
+        bst.insert(110);
+        bst.insert(105);
+        bst.insert(115);
+        bst.insert(103);
+        bst.insert(107);
+        bst.insert(112);
+        bst.insert(118);
     }
 
     @Test
     public void testPrintPreOrder() {
-        bst.insert(10);
-        bst.insert(5);
-        bst.insert(15);
-
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        bst.printPreOrder(); // print preorder
+        bst.printPreOrderTraversal();
 
-        String expectedOutput = "10\n5\n15\n";
-        assertEquals(expectedOutput, outContent.toString());
+        assertEquals("110\n105\n103\n107\n115\n112\n118\n", outContent.toString());
     }
 
     @Test
     public void testPrintPostOrder() {
-        bst.insert(10);
-        bst.insert(5);
-        bst.insert(15);
-
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        bst.printPostOrder(); //
+        bst.printPostOrderTraversal();
 
-        String expectedOutput = "5\n15\n10\n";
-        assertEquals(expectedOutput, outContent.toString());
+        assertEquals("103\n107\n105\n112\n118\n115\n110\n", outContent.toString());
     }
 
     @Test
-    public void testPrintInOrderIterative() {
-        bst.insert(10);
-        bst.insert(5);
-        bst.insert(15);
-
+    public void testPrintInOrder() {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        bst.printInOrderIterative();
+        bst.printInOrderTraversal();
 
-        String expectedOutput = "5\n10\n15\n";
-        assertEquals(expectedOutput, outContent.toString());
+        assertEquals("103\n105\n107\n110\n112\n115\n118\n", outContent.toString());
     }
 
     @Test
     public void testPrintBreadthFirst() {
-        bst.insert(10);
-        bst.insert(5);
-        bst.insert(15);
-
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        bst.printBreadthFirst();
+        bst.printBreadthFirstTraversal();
 
-        String expectedOutput = "10\n5\n15\n";
-        assertEquals(expectedOutput, outContent.toString());
+        assertEquals("110\n105\n115\n103\n107\n112\n118\n", outContent.toString());
     }
 }
-
